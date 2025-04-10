@@ -15,7 +15,6 @@ const client = new Client({
         "DirectMessages",
     ],
 });
-const express = require('express');
 const spotify = new Spotify({
     clientId: config.spotify.clientId,
     clientSecret: config.spotify.clientSecret
@@ -48,16 +47,7 @@ const commands = [
     { name: 'status', description: 'Show player status' },
     { name: 'help', description: 'Show this help message' }
 ];
-const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    res.send('Discord bot is running!');
-});
-
-app.listen(PORT, () => {
-    console.log(`🌐 Web server listening on port ${PORT}`);
-});
 client.on("ready", () => {
     client.riffy.init(client.user.id);
     console.log(`${emojis.success} Logged in as ${client.user.tag}`);
@@ -285,3 +275,15 @@ client.on("raw", (d) => {
 });
 
 client.login(process.env.TOKEN); 
+
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+    res.send('Discord bot is running!');
+});
+
+app.listen(PORT, () => {
+    console.log(`🌐 Web server listening on port ${PORT}`);
+});
