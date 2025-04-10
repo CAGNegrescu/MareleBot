@@ -275,4 +275,4 @@ client.on("raw", (d) => {
     client.riffy.updateVoiceState(d);
 });
 
-client.login('MTM1OTgxMDk3MDA2MjQyNjE4Mw.G1msLw.hVtr5GT0uiPXLHAnz4tMkH7f86l45dfyEDart4'); 
+client.login(process.env.TOKEN); 
